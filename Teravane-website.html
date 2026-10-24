@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teravane | IT Consulting, Cloud & DevOps</title>
+<meta name="description" content="Teravane is an IT consulting firm helping small and mid-sized companies with cloud migration, DevOps, infrastructure, security and technical support.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233ee0b0'/%3E%3Cstop offset='1' stop-color='%235b8cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='10' fill='url(%23g)'/%3E%3Cline x1='12' y1='28' x2='25' y2='15' stroke='%2308131f' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M30 10 L19 13 L27 21 Z' fill='%2308131f'/%3E%3Cpath d='M9 31 L9 23 L14 27 Z M9 31 L17 31 L13 26 Z' fill='%2308131f'/%3E%3Ccircle cx='20' cy='20' r='2.4' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== THEME (colors, fonts) ===== */
+  :root {
+    --bg: #0b1120;
+    --bg-alt: #111a2e;
+    --card: #16213a;
+    --border: #233152;
+    --text: #e6ebf5;
+    --muted: #9aa8c3;
+    --accent: #3ee0b0;
+    --accent-2: #5b8cff;
+    --radius: 14px;
+    --max: 1160px;
+    --font: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  section { padding: 96px 0; }
+  .eyebrow { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; display: inline-block; }
+  h1, h2, h3 { line-height: 1.2; font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 16px; }
+  .lead { color: var(--muted); font-size: 1.08rem; max-width: 640px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 10px; font-weight: 700; font-size: .98rem; transition: transform .15s ease, box-shadow .2s ease; cursor: pointer; border: none; font-family: inherit; }
+  .btn-primary { background: var(--accent); color: #062019; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px var(--accent); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ===== LOGO ===== */
+  .logo { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; }
+  .logo svg { width: 36px; height: 36px; flex-shrink: 0; transition: transform .4s ease; }
+  .logo:hover svg { transform: rotate(-12deg); }
+  .logo .vane { color: var(--accent); }
+
+  /* ===== NAV ===== */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(11,17,32,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { color: var(--muted); font-weight: 600; font-size: .95rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { padding: 10px 18px; font-size: .9rem; }
+  .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+
+  /* ===== HERO ===== */
+  .hero { padding: 110px 0 90px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 80% 10%, rgba(91,140,255,.18), transparent 70%), radial-gradient(500px 300px at 10% 90%, rgba(62,224,176,.12), transparent 70%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; position: relative; }
+  .hero h1 { font-size: clamp(2.3rem, 5vw, 3.7rem); margin-bottom: 22px; }
+  .hero h1 span { color: var(--accent); }
+  .hero .lead { margin-bottom: 34px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 40px; margin-top: 48px; flex-wrap: wrap; }
+  .stat strong { display: block; font-size: 1.9rem; font-weight: 800; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  .terminal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--mono); font-size: .86rem; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
+  .terminal-bar { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .terminal-bar i { width: 11px; height: 11px; border-radius: 50%; }
+  .terminal-bar i:nth-child(1){ background:#ff5f57 } .terminal-bar i:nth-child(2){ background:#febc2e } .terminal-bar i:nth-child(3){ background:#28c840 }
+  .terminal pre { padding: 20px; color: var(--muted); white-space: pre-wrap; }
+  .terminal .c { color: var(--accent); } .terminal .b { color: var(--accent-2); } .terminal .w { color: var(--text); }
+
+  /* ===== SERVICES ===== */
+  #services { background: var(--bg-alt); }
+  .section-head { margin-bottom: 52px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .card-icon { width: 46px; height: 46px; border-radius: 11px; margin-bottom: 20px; background: rgba(62,224,176,.12); color: var(--accent); display: grid; place-items: center; }
+  .card-icon svg { width: 24px; height: 24px; }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: .96rem; }
+  .card ul { list-style: none; margin-top: 16px; }
+  .card li { color: var(--muted); font-size: .9rem; padding-left: 18px; position: relative; margin-bottom: 6px; }
+  .card li::before { content: "›"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+
+  /* ===== PROCESS ===== */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: step; }
+  .step { border-top: 2px solid var(--border); padding-top: 22px; transition: border-color .2s; }
+  .step::before { counter-increment: step; content: "0" counter(step); font-family: var(--mono); color: var(--accent); font-size: .9rem; display: block; margin-bottom: 10px; }
+  .step:hover { border-top-color: var(--accent); }
+  .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: .94rem; }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--bg-alt); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-grid > div > p { color: var(--muted); margin-bottom: 16px; }
+  .tech-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .tech-list span { font-family: var(--mono); font-size: .82rem; padding: 7px 13px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+  .values { display: grid; gap: 16px; }
+  .value { display: flex; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .value b { color: var(--accent); font-family: var(--mono); }
+  .value h4 { font-size: 1.02rem; margin-bottom: 4px; }
+  .value p { color: var(--muted); font-size: .93rem; }
+
+  /* ===== PRICING ===== */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .plan { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 30px; display: flex; flex-direction: column; }
+  .plan.featured { border-color: var(--accent); position: relative; }
+  .plan.featured::after { content: "Most popular"; position: absolute; top: -12px; right: 24px; background: var(--accent); color: #062019; font-size: .75rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; }
+  .plan h3 { font-size: 1.2rem; }
+  .plan .price { font-size: 2.2rem; font-weight: 800; margin: 14px 0 4px; }
+  .plan .price small { font-size: .95rem; color: var(--muted); font-weight: 500; }
+  .plan .desc { color: var(--muted); font-size: .92rem; margin-bottom: 22px; }
+  .plan ul { list-style: none; margin-bottom: 28px; flex: 1; }
+  .plan li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .93rem; color: var(--muted); }
+  .plan li::before { content: "✓  "; color: var(--accent); font-weight: 800; }
+  .plan .btn { justify-content: center; }
+
+  /* ===== FAQ ===== */
+  #faq { background: var(--bg-alt); }
+  .faq { max-width: 780px; }
+  details { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font-size: 1.4rem; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); margin-top: 12px; }
+
+  /* ===== CONTACT ===== */
+  .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; }
+  .contact-info > p { color: var(--muted); margin-bottom: 28px; }
+  .contact-item { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; }
+  .contact-item .card-icon { margin: 0; width: 42px; height: 42px; }
+  .contact-item small { display: block; color: var(--muted); font-size: .82rem; }
+  form { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: grid; gap: 16px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { font-size: .85rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; padding: 13px 14px; border-radius: 9px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; font-size: .95rem; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 120px; }
+  .form-note { font-size: .82rem; color: var(--muted); }
+  .form-success { display: none; color: var(--accent); font-weight: 600; }
+
+  /* ===== FOOTER ===== */
+  footer { border-top: 1px solid var(--border); padding: 36px 0; color: var(--muted); font-size: .9rem; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-row nav { display: flex; gap: 22px; }
+  .footer-row nav a:hover { color: var(--accent); }
+  footer .logo { font-size: 1.1rem; color: var(--text); }
+  footer .logo svg { width: 28px; height: 28px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 960px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .grid-3, .pricing, .steps { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    section { padding: 72px 0; }
+    .nav-links, .nav-cta { display: none; }
+    .menu-toggle { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--bg); padding: 20px; border-bottom: 1px solid var(--border); gap: 18px; }
+    .grid-3, .pricing, .steps, .row { grid-template-columns: 1fr; }
+    .hero { padding: 72px 0 60px; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable logo mark (weathervane) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="tvGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3ee0b0"/><stop offset="1" stop-color="#5b8cff"/>
+    </linearGradient>
+    <symbol id="tvMark" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="10" fill="url(#tvGrad)"/>
+      <line x1="12" y1="28" x2="25" y2="15" stroke="#08131f" stroke-width="3" stroke-linecap="round"/>
+      <path d="M30 10 L19 13 L27 21 Z" fill="#08131f"/>
+      <path d="M9 31 L9 23 L14 27 Z M9 31 L17 31 L13 26 Z" fill="#08131f"/>
+      <circle cx="20" cy="20" r="2.4" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Teravane home"><svg><use href="#tvMark"/></svg><span>tera<span class="vane">vane</span></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary nav-cta">Book a consultation</a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">// IT consulting for growing companies</span>
+      <h1>Set the direction.<br><span>We'll handle the infrastructure.</span></h1>
+      <p class="lead">Teravane helps small and mid-sized businesses modernize their IT: cloud migration, automation, security and reliable technical support. Clear timelines, clear pricing, no jargon.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get a free assessment →</a>
+        <a href="#services" class="btn btn-ghost">Explore services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>10+</strong><span>years of experience</span></div>
+        <div class="stat"><strong>50+</strong><span>projects delivered</span></div>
+        <div class="stat"><strong>24h</strong><span>response time</span></div>
+      </div>
+    </div>
+    <div class="terminal" aria-hidden="true">
+      <div class="terminal-bar"><i></i><i></i><i></i></div>
+<pre><span class="c">$</span> <span class="w">teravane audit --client your-company</span>
+<span class="b">→</span> Scanning infrastructure...
+<span class="b">→</span> Servers:          <span class="w">12 found</span>
+<span class="b">→</span> SSL certificates: <span class="w">3 expiring soon</span>
+<span class="b">→</span> Backups:          <span class="w">never tested</span>
+
+<span class="c">$</span> <span class="w">teravane plan --optimize</span>
+<span class="c">✓</span> Cloud migration
+<span class="c">✓</span> CI/CD automation
+<span class="c">✓</span> Monitoring &amp; alerting
+<span class="c">✓</span> Estimated savings: <span class="w">~30%</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// Services</span>
+      <h2>What we do</h2>
+      <p class="lead">End-to-end support for your IT environment, from one-off projects to long-term partnerships.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <h3>Cloud & Infrastructure</h3>
+        <p>Practical guidance on cloud foundations, server environments, infrastructure design, and operational readiness.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>DevOps &amp; Automation</h3>
+        <p>Review and improve build, release, and deployment workflows to make delivery more consistent and easier to troubleshoot.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+        <h3>IT Infrastructure</h3>
+        <p>Setup and maintenance of servers, databases and networks.</p>
+        <ul><li>Linux &amp; Windows servers</li><li>PostgreSQL &amp; application servers</li><li>Virtualization</li></ul>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Security</h3>
+        <p>Protect your systems and data following industry best practices.</p>
+        <ul><li>SSL certificate management</li><li>Security audits</li><li>Backup &amp; disaster recovery</li></ul>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Monitoring &amp; Support</h3>
+        <p>Proactive monitoring and fast response when issues arise.</p>
+        <ul><li>Monitoring &amp; alerting</li><li>L2/L3 technical support</li><li>SLA-backed contracts</li></ul>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Integrations &amp; Training</h3>
+        <p>Connect your systems and train your team to run them confidently.</p>
+        <ul><li>System integrations (API, AS2)</li><li>Technical documentation</li><li>End-user training</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section id="process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// How we work</span>
+      <h2>A simple four-step process</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Discovery</h3><p>A free 30-minute call to understand your needs and goals.</p></div>
+      <div class="step"><h3>Assessment</h3><p>An audit of your current setup and a clear proposal with timeline and cost.</p></div>
+      <div class="step"><h3>Delivery</h3><p>Phased implementation with regular progress updates.</p></div>
+      <div class="step"><h3>Support</h3><p>Documentation, team training and ongoing maintenance as needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow">// About us</span>
+      <h2>Engineers who understand both tech and business</h2>
+      <p>Teravane grew out of years of hands-on work on demanding projects in regulated industries, where mistakes aren't an option. We bring that same standard of reliability to every client.</p>
+      <p>Like a weathervane, our job is to read the conditions and point you in the right direction, then help you get there.</p>
+      <div class="tech-list">
+        <span>Linux</span><span>Windows Server</span><span>Docker</span><span>Kubernetes</span>
+        <span>AWS</span><span>Azure</span><span>Terraform</span><span>Ansible</span>
+        <span>PostgreSQL</span><span>Java / WildFly</span><span>CI/CD</span>
+      </div>
+    </div>
+    <div class="values">
+      <div class="value"><b>01</b><div><h4>Transparency</h4><p>Fixed-price proposals and clear reports, with no hidden costs.</p></div></div>
+      <div class="value"><b>02</b><div><h4>Reliability</h4><p>We document everything we do, so the knowledge stays with you.</p></div></div>
+      <div class="value"><b>03</b><div><h4>Fast response</h4><p>A reply to every inquiry within 24 hours on business days.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// Pricing</span>
+      <h2>Engagements that fit your needs</h2>
+      <p class="lead">Indicative pricing; the final quote depends on project scope.</p>
+    </div>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Consulting</h3>
+        <div class="price">€50 <small>/ hour</small></div>
+        <p class="desc">For specific questions and short interventions.</p>
+        <ul><li>Remote or on-site</li><li>Written findings and recommendations</li><li>No long-term commitment</li></ul>
+        <a href="#contact" class="btn btn-ghost">Book a session</a>
+      </div>
+      <div class="plan featured">
+        <h3>Project</h3>
+        <div class="price">Custom quote</div>
+        <p class="desc">Migrations, automation and infrastructure setup.</p>
+        <ul><li>Detailed audit and roadmap</li><li>Fixed price and timeline</li><li>Documentation and training</li><li>30 days of post-delivery support</li></ul>
+        <a href="#contact" class="btn btn-primary">Request a quote</a>
+      </div>
+      <div class="plan">
+        <h3>Managed Support</h3>
+        <div class="price">from €400 <small>/ month</small></div>
+        <p class="desc">Your outsourced IT/DevOps team.</p>
+        <ul><li>System monitoring</li><li>Guaranteed response times (SLA)</li><li>Regular maintenance and updates</li><li>Monthly report</li></ul>
+        <a href="#contact" class="btn btn-ghost">Learn more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">// FAQ</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Do you work with small companies?</summary><p>Yes. Most of our clients are small and mid-sized businesses without an in-house IT team, or teams that need extra expertise.</p></details>
+      <details><summary>Do you work remotely?</summary><p>Most of our work is done remotely through secure access to your systems. We can also work on-site when needed.</p></details>
+      <details><summary>How long does a typical project take?</summary><p>It depends on scope: smaller projects take 1–2 weeks, larger migrations 1–3 months. You'll get an exact timeline in our proposal.</p></details>
+      <details><summary>Will you sign an NDA?</summary><p>Of course. Confidentiality is a standard part of every engagement.</p></details>
+      <details><summary>How does billing work?</summary><p>We invoice monthly or per project milestone, in EUR or your preferred currency.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">// Contact</span>
+      <h2>Let's talk</h2>
+      <p>Briefly describe your challenge and we'll get back to you within 24 hours with suggested next steps.</p>
+      <div class="contact-item">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><small>Email</small><a href="mailto:radojevicmarina2@gmail.com">radojevicmarina2@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><small>Contact</small><a href="Marina Radojevic">Marina Radojevic</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><small>Location</small>Belgrade, Serbia · Working worldwide</div>
+      </div>
+    </div>
+
+    <!-- The form opens the visitor's email client. For direct delivery, connect it to a service like Formspree. -->
+    <form id="contactForm">
+      <div class="row">
+        <div><label for="name">Full name</label><input id="name" name="name" required></div>
+        <div><label for="company">Company</label><input id="company" name="company"></div>
+      </div>
+      <div class="row">
+        <div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+        <div><label for="service">Service</label>
+          <select id="service" name="service">
+            <option>Cloud Migration</option><option>DevOps &amp; Automation</option>
+            <option>IT Infrastructure</option><option>Security</option>
+            <option>Monitoring &amp; Support</option><option>Something else</option>
+          </select>
+        </div>
+      </div>
+      <div><label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell us briefly what you need..."></textarea></div>
+      <button type="submit" class="btn btn-primary">Send inquiry →</button>
+      <p class="form-note">Your details are used only to respond to your inquiry.</p>
+      <p class="form-success" id="formSuccess">Thank you! Your email client will open with the message ready to send.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container footer-row">
+    <a href="#" class="logo"><svg><use href="#tvMark"/></svg><span>tera<span class="vane">vane</span></span></a>
+    <span>© <span id="year"></span> Teravane IT Consulting. All rights reserved.</span>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const f = e.target;
+    const subject = encodeURIComponent('Inquiry: ' + f.service.value + ' – ' + f.name.value);
+    const body = encodeURIComponent(
+      'Name: ' + f.name.value + '\nCompany: ' + f.company.value + '\nEmail: ' + f.email.value +
+      '\nService: ' + f.service.value + '\n\n' + f.message.value
+    );
+    window.location.href = 'mailto:hello@teravane.com?subject=' + subject + '&body=' + body;
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
